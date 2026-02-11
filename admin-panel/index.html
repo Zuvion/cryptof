@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Crypto Exchange</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-app">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <h1>CRYPTO<span>EX</span></h1>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1 4 1 10 7 10"></polyline>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                    <span>Панель</span>
+                </a>
+                <a href="#" class="nav-item" data-page="users">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Пользователи</span>
+                </a>
+                <a href="#" class="nav-item" data-page="withdraw">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19V5M5 12h14"></path>
+                    </svg>
+                    <span>Заявки на вывод</span>
+                </a>
+                <a href="#" class="nav-item" data-page="transactions">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3z"></path>
+                    </svg>
+                    <span>Транзакции</span>
+                </a>
+                <a href="#" class="nav-item" data-page="orders">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Ордера</span>
+                </a>
+                <a href="#" class="nav-item" data-page="actions">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="9" x2="15" y2="9"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                    <span>Журнал действий</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <h2 id="pageTitle">Панель управления</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-menu">
+                        <div class="user-avatar">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="user-details">
+                            <div class="user-name">Администратор</div>
+                            <div class="user-role">Супер администратор</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard -->
+            <section id="dashboard" class="page-content active">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalUsers">0</div>
+                            <div class="stat-label">Всего пользователей</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M5 12h14"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="pendingWithdraw">0</div>
+                            <div class="stat-label">Заявок на вывод</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3z"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalTransactions">0</div>
+                            <div class="stat-label">Транзакций за сегодня</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="activeOrders">0</div>
+                            <div class="stat-label">Активных ордеров</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Последние действия</h3>
+                    <div class="activity-list" id="activityList">
+                        <!-- Recent activity will be dynamically populated -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users -->
+            <section id="users" class="page-content">
+                <div class="page-header">
+                    <h3>Пользователи</h3>
+                    <div class="search-box">
+                        <input type="text" id="userSearch" placeholder="Поиск пользователей...">
+                    </div>
+                </div>
+                <div class="users-table-container">
+                    <table class="data-table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>Telegram ID</th>
+                                <th>Имя</th>
+                                <th>Юзернейм</th>
+                                <th>Баланс USDT</th>
+                                <th>Статус</th>
+                                <th>Верификация</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Withdraw Requests -->
+            <section id="withdraw" class="page-content">
+                <div class="page-header">
+                    <h3>Заявки на вывод</h3>
+                </div>
+                <div class="withdraw-table-container">
+                    <table class="data-table" id="withdrawTable">
+                        <thead>
+                            <tr>
+                                <th>ID заявки</th>
+                                <th>Пользователь</th>
+                                <th>Валюта</th>
+                                <th>Сумма</th>
+                                <th>Статус</th>
+                                <th>Дата создания</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="withdrawTableBody">
+                            <!-- Withdraw requests will be dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Transactions -->
+            <section id="transactions" class="page-content">
+                <div class="page-header">
+                    <h3>Транзакции</h3>
+                </div>
+                <div class="transactions-table-container">
+                    <table class="data-table" id="transactionsTable">
+                        <thead>
+                            <tr>
+                                <th>ID транзакции</th>
+                                <th>Пользователь</th>
+                                <th>Тип</th>
+                                <th>Валюта</th>
+                                <th>Сумма</th>
+                                <th>Статус</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsTableBody">
+                            <!-- Transactions will be dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Orders -->
+            <section id="orders" class="page-content">
+                <div class="page-header">
+                    <h3>Ордера</h3>
+                </div>
+                <div class="orders-table-container">
+                    <table class="data-table" id="ordersTable">
+                        <thead>
+                            <tr>
+                                <th>ID ордера</th>
+                                <th>Пользователь</th>
+                                <th>Пара</th>
+                                <th>Тип</th>
+                                <th>Цена</th>
+                                <th>Сумма</th>
+                                <th>Статус</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Orders will be dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Admin Actions -->
+            <section id="actions" class="page-content">
+                <div class="page-header">
+                    <h3>Журнал действий</h3>
+                </div>
+                <div class="actions-table-container">
+                    <table class="data-table" id="actionsTable">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Администратор</th>
+                                <th>Действие</th>
+                                <th>Цель</th>
+                                <th>Описание</th>
+                            </tr>
+                        </thead>
+                        <tbody id="actionsTableBody">
+                            <!-- Admin actions will be dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- User Details Modal -->
+    <div class="modal" id="userDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Детали пользователя</h2>
+                <button class="close-btn" id="closeUserDetailsModal">×</button>
+            </div>
+            <div class="user-details-content" id="userDetailsContent">
+                <!-- User details will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdraw Request Modal -->
+    <div class="modal" id="withdrawDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Детали заявки</h2>
+                <button class="close-btn" id="closeWithdrawDetailsModal">×</button>
+            </div>
+            <div class="withdraw-details-content" id="withdrawDetailsContent">
+                <!-- Withdraw details will be dynamically populated -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" id="approveWithdrawBtn">Одобрить</button>
+                <button class="btn-danger" id="rejectWithdrawBtn">Отклонить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
